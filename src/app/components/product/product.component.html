@@ -1,0 +1,10 @@
+<li>
+  <div style="display:inline-block">{{product.name}} : {{product.price}} ({{product.category}})</div>
+  <div *ngIf="showBuyButton" style="display:inline-block"><button type="button" (click)='onBuy()'>Buy</button></div>
+  <div *ngIf="showRemoveButton" style="display:inline-block"><button type="button" (click)='onRemove()'>Remove</button></div>
+  <div *ngIf="detailedView && product.HasEquivalents()"> Equivalents :
+    <ul>
+      <li *ngFor="let eqv of product.equivalents">{{eqv}}</li>
+    </ul>
+  </div>  
+</li>
