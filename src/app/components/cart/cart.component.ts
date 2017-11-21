@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { CartService } from './../../services/cart-service/cart.service'
-import { Product } from './../../model/product.model'
+import { CartItem } from './../../model/cart-item.model'
 
 @Component({
   selector: 'app-cart',
@@ -9,11 +9,12 @@ import { Product } from './../../model/product.model'
   encapsulation: ViewEncapsulation.None
 })
 export class CartComponent implements OnInit {
-  constructor() { }
+  constructor(public cartService: CartService) { }
 
   ngOnInit() {
   }
 
-  @Input() cartService: CartService;
-  @Input() purchases: Array<Product> [];
+  itemsInCart(): Array<CartItem> {
+    return this.cartService.ItemsInCart();
+  };
 }

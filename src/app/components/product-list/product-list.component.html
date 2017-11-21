@@ -1,8 +1,6 @@
 <ul>  
   <app-product *ngFor="let product of products"
                 [product]="product"
-                [cartService]="cartService"
                 [detailedView]="detailedView"
-                [showBuyButton]="showBuyButton"
-                [showRemoveButton]="showRemoveButton"></app-product>
+                [showBuyButton]="showBuyButton"></app-product>
 </ul>

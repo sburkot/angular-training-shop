@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, Output } from '@angular/core';
 import { Product } from './../../model/product.model'
 import { CartService } from './../../services/cart-service/cart.service'
 
@@ -16,8 +16,6 @@ export class ProductListComponent implements OnInit {
   }
 
   @Input() products: Array<Product>;
-  @Input() cartService: CartService;
   @Input() detailedView: boolean;
   @Input() showBuyButton: boolean;
-  @Input() showRemoveButton: boolean;
 }

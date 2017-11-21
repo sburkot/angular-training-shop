@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input, Output } from '@angular/core';
+import { Component, AfterViewInit, ViewEncapsulation, Input, Output, ViewChild, ElementRef } from '@angular/core';
 import { Product } from './../../model/product.model'
 import { CartService } from './../../services/cart-service/cart.service'
 
@@ -8,24 +8,24 @@ import { CartService } from './../../services/cart-service/cart.service'
   styleUrls: ['./product.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class ProductComponent implements OnInit {  
+export class ProductComponent implements AfterViewInit {  
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-  
   @Input() product: Product;
-  @Input() cartService: CartService;
   @Input() detailedView: boolean;
-  @Input() showBuyButton: boolean;
-  @Input() showRemoveButton: boolean;
+  @Input() showBuyButton: boolean;    
+  @ViewChild('button') buyButton: ElementRef;
 
-  onBuy(): void {    
-    this.cartService.AddToCart(this.product);
+  constructor(public cartService : CartService) { }
+
+  ngAfterViewInit() {
+    (<HTMLButtonElement>this.buyButton.nativeElement).disabled = !this.product.isAvailable;
   }
 
-  onRemove(): void {    
+  onBuy(): void {
+      this.cartService.AddToCart(this.product);
+  }
+
+  onRemove(): void {
     this.cartService.RemoveFromCart(this.product);
   }
 }
