@@ -4,18 +4,17 @@ import { CartItem } from './../../model/cart-item.model'
 
 @Injectable()
 export class CartService {
-  private products: Array<Product> = [];
   private items: Array<CartItem> = [];
 
   constructor() { }
 
   ngOnInit() {
-    this.products = []; // Question
+    this.items = []; // Question
   }
 
   public IsEmpty(): boolean{
-    return this.products == null ||
-           this.products.length == 0;
+    return this.items == null ||
+           this.items.length == 0;
   }
 
   public ItemsInCart(): Array<CartItem>{
@@ -35,10 +34,6 @@ export class CartService {
   }
 
   public AddToCart(product){
-    this.products.push(product);    
-    console.log('Someone wants buy ' + product.name);
-
-
     var isAlreadyAdded = false;
     for(var index in this.items)
     {
@@ -52,13 +47,11 @@ export class CartService {
 
     if(!isAlreadyAdded)
       this.items.push(new CartItem(product));
+
+    console.log('Someone wants buy ' + product.name);
   }
 
-  public RemoveFromCart(product){
-    const pos = this.products.indexOf(product);
-    this.products.splice(pos, 1);
-    console.log('Someone doesn\'t want to buy ' + product.name);
-
+  public RemoveFromCart(product){    
     for(var index in this.items)
     {
       if(this.items[index].product.id == product.id)
@@ -70,5 +63,6 @@ export class CartService {
         break;
       }
     }
+    console.log('Someone doesn\'t want to buy ' + product.name);
   }
 }
