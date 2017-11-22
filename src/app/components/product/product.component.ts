@@ -22,7 +22,7 @@ export class ProductComponent implements AfterViewInit {
   }
 
   onBuy(): void {
-      this.cartService.AddToCart(this.product);
+    this.cartService.AddToCart(this.product);
   }
 
   onRemove(): void {

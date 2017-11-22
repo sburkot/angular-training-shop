@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
 import { CatalogModule } from './components/catalog/catalog.module'
 import { CartModule } from './components/cart/cart.module'

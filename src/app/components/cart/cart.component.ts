@@ -10,9 +10,8 @@ import { CartItem } from './../../model/cart-item.model'
 })
 export class CartComponent implements OnInit {
   constructor(public cartService: CartService) { }
-
-  ngOnInit() {
-  }
+  
+  ngOnInit() { }
 
   itemsInCart(): Array<CartItem> {
     return this.cartService.ItemsInCart();

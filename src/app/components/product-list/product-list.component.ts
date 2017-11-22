@@ -11,9 +11,7 @@ import { CartService } from './../../services/cart-service/cart.service'
 export class ProductListComponent implements OnInit {
 
   constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   @Input() products: Array<Product>;
   @Input() detailedView: boolean;

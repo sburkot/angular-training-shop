@@ -5,7 +5,7 @@ import { CartItem } from './../../model/cart-item.model'
 @Injectable()
 export class CartService {
   private items: Array<CartItem> = [];
-
+  
   constructor() { }
 
   ngOnInit() {
