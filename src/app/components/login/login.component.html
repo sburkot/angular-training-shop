@@ -1,0 +1,8 @@
+<div style='width:100%; text-align:right'>
+  <div style="display:inline-block"><pre>I'm </pre></div>
+  <div style="display:inline-block">
+    <select (change)="setCurrentUser($event)">
+      <option *ngFor="let user of users" >{{user}}</option>
+    </select>
+  </div>
+</div>

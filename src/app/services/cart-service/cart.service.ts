@@ -5,7 +5,9 @@ import { CartItem } from './../../model/cart-item.model'
 @Injectable()
 export class CartService {
   private items: Array<CartItem> = [];
-  
+  public discount: number = -1;
+  public discountAttempts: number = 3;
+    
   constructor() { }
 
   ngOnInit() {
@@ -21,12 +23,25 @@ export class CartService {
     return this.items;
   }
 
-  public TotalCost(): Number {
+  public TotalQty(): number {
+    var totalQty = 0;
+    this.items.forEach(function(i) {
+      totalQty += i.quantity;
+    })
+    return totalQty;
+  }
+
+  public TotalCost(): number {
     var totalCost = 0;
     this.items.forEach(function(i) {
       totalCost += i.product.price * i.quantity;
     })
     return totalCost;
+  }
+
+  public TotalCostWithDiscount(): number{
+    var totalCost = this.TotalCost();
+    return totalCost - (totalCost * this.discount / 100);
   }
 
   public Log(){
@@ -64,5 +79,11 @@ export class CartService {
       }
     }
     console.log('Someone doesn\'t want to buy ' + product.name);
+  }
+
+  public ClearCart() {
+    this.items = [];
+    this.discount = -1;
+    this.discountAttempts = 3;
   }
 }

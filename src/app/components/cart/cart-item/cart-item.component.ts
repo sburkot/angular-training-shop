@@ -9,8 +9,8 @@ import { CartService } from './../../../services/cart-service/cart.service'
   encapsulation: ViewEncapsulation.None
 })
 export class CartItemComponent implements OnInit {
-  @Input() item: CartItem;
-
+  @Input() item: CartItem;  
+  
   constructor(public cartService : CartService) { }
 
   ngOnInit() {
@@ -18,5 +18,10 @@ export class CartItemComponent implements OnInit {
 
   onRemove(): void {    
     this.cartService.RemoveFromCart(this.item.product);
+  }  
+
+  onChange(): void {    
+  //  this.cartService.AddToCart(this.item.product);
+  //  console.log('onChange is called');
   }
 }

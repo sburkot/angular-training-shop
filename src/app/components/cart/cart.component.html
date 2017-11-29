@@ -1,5 +1,24 @@
 <div *ngIf="!cartService.IsEmpty()">
     <h3>Your Cart</h3>
     <app-cart-item-list [items] = "cartService.ItemsInCart()"></app-cart-item-list>    
-    <b>Total: {{cartService.TotalCost()}}</b>
+    <div style="display:inline-block; width:230px"><b>Total:</b></div>
+    <div style="display:inline-block; width:20px; text-align: right"><b>{{cartService.TotalQty()}}</b></div>
+    <div style="display:inline-block; width:110px; text-align: right"><b>{{cartService.TotalCost()}}</b></div>
+    <div *ngIf="allowDiscount()" style="display:inline-block; width:100px; text-align: center"><button type="button" (click)='onGetDiscount()'>Get Discount</button></div>
+    <br><br>
+    <div *ngIf="discount() >= 0">
+        <div>
+            <div style="display:inline-block; width:300px; text-align: left"><b>Congratulations!!! Your discount:</b></div>
+            <div style="display:inline-block; width:80px; text-align: right"><b>- {{discount()}} %</b></div>
+            <div *ngIf="cartService.discountAttempts > 0">
+                <div>* You still have <b>{{cartService.discountAttempts}}</b> attempts to try your luck.</div>
+                <div>** But remember, next attempt can be worse than current.</div>
+                <br>
+            </div>
+        </div>
+        <div>
+            <div style="display:inline-block; width:300px; text-align: left"><b>Total To Pay:</b></div>
+            <div style="display:inline-block; width:60px; text-align: right"><b>{{cartService.TotalCostWithDiscount()}}</b></div>
+        </div>
+    </div>
 </div>

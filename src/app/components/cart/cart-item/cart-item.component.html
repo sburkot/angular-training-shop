@@ -1,4 +1,8 @@
 <li>
-  <div style="display:inline-block">{{item.product.name}} : {{item.product.price}} ({{item.quantity}}) - {{item.Cost()}}</div>
-  <div style="display:inline-block"><button type="button" (click)='onRemove()'>Remove</button></div>
+  <div style="display:inline-block; width:200px">{{item.product.name}}</div>
+  <div style="display:inline-block"><input style="width:30px" type="number" [(ngModel)]="item.quantity" min="1" (change)="onChange()"></div>
+  <div style="display:inline-block">x</div>
+  <div style="display:inline-block; width:30px">{{item.product.price}}</div>
+  <div style="display:inline-block; width:40px; text-align: right"><b>{{item.Cost()}}</b></div>
+  <div style="display:inline-block; width:100px; text-align: center"><button type="button" (click)='onRemove()'>Remove</button></div>
 </li>

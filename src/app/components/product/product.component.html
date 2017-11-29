@@ -1,13 +1,13 @@
 <li>
   <div [ngClass]="{disabled: !product.isAvailable}">
-    <div style="display:inline-block">{{product.name}} : {{product.price}} ({{product.category}})</div>
+    <div style="display:inline-block; width:300px">{{product.name}} : {{product.price}} ({{product.category}})</div>
     <div *ngIf="showBuyButton" style="display:inline-block">
       <button #button type="button" (click)='onBuy()'>Buy</button>
     </div>
-    <div *ngIf="detailedView && product.HasEquivalents()"> Equivalents :
-      <ul>
-        <li *ngFor="let eqv of product.equivalents">{{eqv}}</li>
-      </ul>
-    </div>
+      <div *ngIf="detailedView && product.HasEquivalents()" title="Eqs"> Equivalents :
+        <ul>
+          <li *ngFor="let eqv of product.equivalents">{{eqv}}</li>
+        </ul>
+      </div>
   </div>
 </li>
