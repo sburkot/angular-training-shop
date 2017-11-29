@@ -1,13 +1,16 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Inject, InjectionToken, FactoryProvider } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProductListModule } from './../product-list/product-list.module'
 import { CartComponent } from './cart.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { CartItemListComponent } from './cart-item-list/cart-item-list.component';
-//import { CartService } from './../../services/cart-service/cart.service';
+import { DiscountService, GetDiscountService, DscontSrv} from './../../services/discount-service/discount.service'
+import { UserService, UserSrv } from './../../services/user-service/user.service'
 
 @NgModule({
   imports: [
+    FormsModule,
     CommonModule,
     ProductListModule
   ],
@@ -22,6 +25,7 @@ import { CartItemListComponent } from './cart-item-list/cart-item-list.component
   entryComponents: [
   ],
   providers: [
+    { provide: DscontSrv, useFactory:  GetDiscountService, deps: [UserSrv] }
   ],
 })
 export class CartModule { }
